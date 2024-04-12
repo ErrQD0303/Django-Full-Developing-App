@@ -1,11 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Hello from All Posts
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  My Blog
+{% endblock %}
+
+{% block css_files%}
+  <link rel="stylesheet" href="{% static "blog/post.css" %}">
+  <link rel="stylesheet" href="{% static "blog/all-posts.css" %}">
+{% endblock %}
+
+{% block content %}
+  <section id="all-posts">
+    <h2>My Collected Posts</h2>
+
+    <ul>
+      {% include "blog/includes/post.html" %}
+      {% include "blog/includes/post.html" %}
+      {% include "blog/includes/post.html" %}
+      {% include "blog/includes/post.html" %}
+      {% include "blog/includes/post.html" %}
+      {% include "blog/includes/post.html" %}
+    </ul>
+  </section>
+{% endblock %}
