@@ -12,6 +12,7 @@ python-dotenv = "*"
 django-bootstrap-icons = "*"
 django-livereload-server = "*"
 djhtml = "*"
+pillow = "*"
 
 [dev-packages]
 
