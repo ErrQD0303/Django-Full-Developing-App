@@ -14,6 +14,8 @@ django-livereload-server = "*"
 djhtml = "*"
 pillow = "*"
 gunicorn = "*"
+django-storages = "*"
+boto3 = "*"
 
 [dev-packages]
 

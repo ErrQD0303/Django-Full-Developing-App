@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'blog',
+    "storages",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -141,3 +142,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = BASE_DIR / "uploads"
 MEDIA_URL = "/files/"
+
+AWS_STORAGE_BUCKET_NAME = "django-blog-course-by-nqd"  # Bucket name
+AWS_S3_REGION_NAME = "ap-southeast-2"  # Region name
+# Get ID AND KEY IN YOUR DOWNLOADED USER CSV FILE
+AWS_ACCESS_KEY_ID = "AKIAZQ3DO4WI2EURADPY"
+AWS_SECRET_ACCESS_KEY = "Knr4Vje1a/vZ4Ktumw/aXIp1ahhWr80zSLtkgyDj"
+
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+
+STATICFILES_FOLDER = "static"
+MEDIAFILES_FOLDER = "media"
+
+STATICFILES_STORAGE = "custom_storages.StaticFileStorage"
+DEFAULT_FILE_STORAGE = "custom_storages.MediaFileStorage"
