@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from os import getenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-18*y9nszw(+314d%%x$o6xem!y%6+@%-wor#z&my4)qje)shhi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = getenv("IS_PRODUCTION", True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    getenv("APP_HOST"),
+    # "django-app-env.eba-mc3z8bfi.ap-southeast-2.elasticbeanstalk.com",
+    "127.0.0.1"
+]
 
 
 # Application definition
@@ -37,18 +42,17 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'livereload',
     'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'livereload.middleware.LiveReloadScript',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -120,6 +124,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+# Deployment
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Development
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [

@@ -13,6 +13,7 @@ django-bootstrap-icons = "*"
 django-livereload-server = "*"
 djhtml = "*"
 pillow = "*"
+gunicorn = "*"
 
 [dev-packages]
 
